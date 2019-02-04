@@ -4,8 +4,8 @@ background-color: black;
 
 .gamebody{
 margin: 120px auto;
-width: 450px;
-height: 525px;
+width: 475px;
+height: auto;
 border: 2px dotted yellow;
 }
 
@@ -16,6 +16,7 @@ h1 {
 }
 
 .tile {
+  box-sizing: border-box;
   width: 25px;
   height: 25px;
   display: inline-block;
@@ -35,4 +36,5 @@ h1 {
 
 .pacman {
   text-align: center;
+  background-image: url(../images/pacman-right.gif);
 }
