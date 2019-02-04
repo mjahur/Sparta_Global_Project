@@ -1,5 +1,5 @@
 //Game Data
-var gameData =
+var mapArray =
 [
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0],
@@ -28,3 +28,12 @@ var wall = 0;
 var coin = 1;
 var blank = 2;
 var pacman = 3;
+
+//Draw map
+function drawMap() {for (var y = 0; y < mapArray.length; y++) {
+  for (var x = 0; x < mapArray[y].length; x++) {
+  };
+}
+};
+
+drawMap();
