@@ -31,6 +31,11 @@ var mapArray =
 // pacman = 3;
 
 var pacman = [7,9];
+var score = document.getElementById('score').innerHTML;
+function changeScore() {
+ score = Number(score) + 10;
+ document.getElementById('score').innerHTML = score;
+};
 
 //Draw map
 function drawMap() {
@@ -58,7 +63,11 @@ drawMap();
 document.onkeydown = function(event) {
   //Below allows pacman to move down BUT not past walls.
   if (event.keyCode === 40) {
+    // if ( mapArray[pacman[0]+1][pacman[1]] == 1) {
+    //   $(.scoreboard).html("")
+    // }
     if (mapArray[pacman[0]+1][pacman[1]] !== 0) {
+      $(".pacman").css('background-image',"url(../images/pacman-right.gif)")
       mapArray[pacman[0]][pacman[1]] = 2;
       mapArray[pacman[0]+1][pacman[1]] = 3;
       pacman = [pacman[0]+1,pacman[1]];

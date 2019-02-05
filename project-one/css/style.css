@@ -1,12 +1,27 @@
 body {
-background-color: black;
+  background-color: black;
+}
+.container{
+  width: 477px;
+  margin: auto;
 }
 
 .gamebody{
-margin: 120px auto;
-width: 475px;
-height: auto;
-border: 2px dotted yellow;
+  display: inline-block;
+  width: 475px;
+  height: auto;
+  border: 2px dotted yellow;
+  text-align: center;
+}
+
+.timer {
+  display: inline-block;
+  color: yellow;
+}
+
+.scoreboard{
+  display: inline-block;
+  color: yellow;
 }
 
 h1 {
