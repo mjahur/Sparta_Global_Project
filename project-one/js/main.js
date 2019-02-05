@@ -31,11 +31,22 @@ var mapArray =
 // pacman = 3;
 
 var pacman = [7,9];
+var countdown = 60;
 var score = document.getElementById('score').innerHTML;
 function changeScore() {
  score = Number(score) + 10;
  document.getElementById('score').innerHTML = score;
 };
+
+//score
+setInterval(function(){
+  if (countdown!= 0) {
+    countdown--;
+    document.getElementById("timer").innerHTML = countdown
+  }else {
+    document.location = "game_over.html"
+  }
+},1000);
 
 //Draw map
 function drawMap() {
@@ -63,9 +74,9 @@ drawMap();
 document.onkeydown = function(event) {
   //Below allows pacman to move down BUT not past walls.
   if (event.keyCode === 40) {
-    // if ( mapArray[pacman[0]+1][pacman[1]] == 1) {
-    //   $(.scoreboard).html("")
-    // }
+    if ( mapArray[pacman[0]+1][pacman[1]] == 1) {
+      changeScore()
+    };
     if (mapArray[pacman[0]+1][pacman[1]] !== 0) {
       $(".pacman").css('background-image',"url(../images/pacman-right.gif)")
       mapArray[pacman[0]][pacman[1]] = 2;
@@ -75,6 +86,9 @@ document.onkeydown = function(event) {
   }
   //Below allows pacman to move up BUT not past walls.
     else if (event.keyCode === 38) {
+      if ( mapArray[pacman[0]-1][pacman[1]] == 1) {
+        changeScore()
+      };
      if (mapArray[pacman[0]-1][pacman[1]] !== 0) {
        mapArray[pacman[0]][pacman[1]] = 2;
        mapArray[pacman[0]-1][pacman[1]] = 3;
@@ -83,6 +97,9 @@ document.onkeydown = function(event) {
    }
    //Below allows pacman to move to users left BUT not past walls.
      else if (event.keyCode === 37) {
+       if ( mapArray[pacman[0]][pacman[1]-1] == 1) {
+         changeScore()
+       };
       if (mapArray[pacman[0]][pacman[1]-1] !== 0) {
         mapArray[pacman[0]][pacman[1]] = 2;
         mapArray[pacman[0]][pacman[1]-1] = 3;
@@ -91,6 +108,9 @@ document.onkeydown = function(event) {
   }
   //Below allows pacman to move to users right BUT not past walls.
   else if (event.keyCode === 39) {
+    if ( mapArray[pacman[0]][pacman[1]+1] == 1) {
+      changeScore()
+    };
    if (mapArray[pacman[0]][pacman[1]+1] !== 0) {
      mapArray[pacman[0]][pacman[1]] = 2;
      mapArray[pacman[0]][pacman[1]+1] = 3;
@@ -98,4 +118,7 @@ document.onkeydown = function(event) {
    };
  }
   drawMap();
+  if (score == 1560) {
+    document.location = "you_win.html"
+  };
 };

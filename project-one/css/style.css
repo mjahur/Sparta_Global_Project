@@ -13,8 +13,9 @@ body {
   border: 2px dotted yellow;
   text-align: center;
 }
+.score{display: inline-block;}
 
-.timer {
+#timer {
   display: inline-block;
   color: yellow;
 }
