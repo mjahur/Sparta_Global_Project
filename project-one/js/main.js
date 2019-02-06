@@ -63,7 +63,7 @@ function drawMap() {
     $(".gamebody").append("<div class='blank tile'></div>");
   }
   else if (mapArray[y][x] == 3) {
-    $(".gamebody").append("<div class='pacman tile'></div>");
+    $(".gamebody").append("<div++ class='pacman tile'></div>");
   }
 }
 }
@@ -78,7 +78,6 @@ document.onkeydown = function(event) {
       changeScore()
     };
     if (mapArray[pacman[0]+1][pacman[1]] !== 0) {
-      $(".pacman").css('background-image',"url(../images/pacman-right.gif)")
       mapArray[pacman[0]][pacman[1]] = 2;
       mapArray[pacman[0]+1][pacman[1]] = 3;
       pacman = [pacman[0]+1,pacman[1]];

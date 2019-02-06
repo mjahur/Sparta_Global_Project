@@ -50,6 +50,10 @@ h1 {
 
 }
 
+#id {
+  background-color: red;
+}
+
 .pacman {
   text-align: center;
   background-image: url(../images/pacman-right.gif);
