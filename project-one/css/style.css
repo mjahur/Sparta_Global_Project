@@ -1,9 +1,13 @@
 body {
   background-color: black;
+  color: yellow;
+  font-family:Helvetica;
+  text-align: center;
 }
 .container{
   width: 477px;
   margin: auto;
+  text-align: left;
 }
 
 .gamebody{
