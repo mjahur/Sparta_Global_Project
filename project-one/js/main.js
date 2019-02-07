@@ -4,7 +4,7 @@ var mapArray =
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0],
 [0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0],
-[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,0],
+[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 [0,1,0,0,1,0,1,0,0,0,0,0,1,0,1,0,0,1,0],
 [0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0],
 [0,0,0,0,1,0,0,0,2,0,2,0,0,0,1,0,0,0,0],
@@ -29,10 +29,9 @@ var mapArray =
 // coin = 1;
 // blank = 2;
 // pacman = 3;
-// ghost = 4;
+// hole=4
 
 var pacman = [7,9];
-var ghost = [3,17];
 var countdown = 60;
 var score = document.getElementById('score').innerHTML;
 function changeScore() {
@@ -65,77 +64,25 @@ function drawMap() {
     $(".gamebody").append("<div class='blank tile'></div>");
   }
   else if (mapArray[y][x] == 3) {
-    $(".gamebody").append("<div class='pacman tile'></div>");
+    $(".gamebody").append("<div class='pacmanright tile'></div>");
   }
   else if (mapArray[y][x] == 4) {
-    $(".gamebody").append("<div class='ghost tile'></div>");
+    $(".gamebody").append("<div class='pacmanleft tile'></div>");
+  }
+  else if (mapArray[y][x] == 5) {
+    $(".gamebody").append("<div class='pacmanup tile'></div>");
+  }
+  else if (mapArray[y][x] == 6) {
+    $(".gamebody").append("<div class='pacmandown tile'></div>");
   }
 }
 }
 };
 drawMap();
 
-//ghost Movement
-
-// var ghostmove = setInterval( function(){
-//   var moveDirestion = [ghost[1]-1];
-//
-//   if((mapArray[ghost[0]][ghost[1]-1] != 0)&&(moveDirestion < 16))
-//   {
-//     moveDirestion = moveDirestion+1;
-//     mapArray[ghost[0]][ghost[1]] = 2;
-//     mapArray[ghost[0]][ghost[1]-1] = 4;
-//     ghost = [ghost[0], ghost[1]-1];
-//     console.log(moveDirestion +"if");
-//     drawMap()}
-//     else if((mapArray[ghost[0]][ghost[1]+1] != 0) && (moveDirestion >=16))
-//       {
-//         moveDirestion++;
-//         mapArray[ghost[0]][ghost[1]] = 2;
-//         mapArray[ghost[0]][ghost[1]+1] = 4;
-//         ghost = [ghost[0], ghost[1]+1];
-//         console.log(moveDirestion +"ifelse");
-//         drawMap()}
-//         moveDirestion = moveDirestion%34;
-//         console.log(moveDirestion+ "mod");
-//
-//
-//   }, 400);
-// ghostmove();
-// clearInterval(ghostmove);
-
-
-
-var ghostright = setInterval( function(){
-  if(mapArray[ghost[0]][ghost[1]-1] != 0)
-  {console.log(1);
-    mapArray[ghost[0]][ghost[1]] = 2;
-    mapArray[ghost[0]][ghost[1]-1] = 4;
-    ghost = [ghost[0], ghost[1]-1];
-    drawMap()}
-    else{
-    clearInterval(ghostright);
-    ghostleft();
-    }
-  }, 400);
-clearInterval(ghostright);
-
-
-console.log("right");
-var ghostleft =  setInterval( function(){
-  console.log("time");
-    if(mapArray[ghost[0]][ghost[1]+1] != 0)
-    {
-      mapArray[ghost[0]][ghost[1]] = 2;
-      mapArray[ghost[0]][ghost[1]+1] = 4;
-      ghost = [ghost[0], ghost[1]+1];
-      drawMap()}
-      else{
-        clearInterval(ghostleft);
-      }
-    }, 400);
-clearInterval(ghostleft);
-console.log("left");
+setInterval(function() {
+  mapArray[6,10]
+})
 
 
 //Movement of pacman
@@ -147,42 +94,42 @@ document.onkeydown = function(event) {
     };
     if (mapArray[pacman[0]+1][pacman[1]] !== 0) {
       mapArray[pacman[0]][pacman[1]] = 2;
-      mapArray[pacman[0]+1][pacman[1]] = 3;
+      mapArray[pacman[0]+1][pacman[1]] = 6;
       pacman = [pacman[0]+1,pacman[1]];
     };
   }
   //Below allows pacman to move up BUT not past walls.
     else if (event.keyCode === 38) {
       if ( mapArray[pacman[0]-1][pacman[1]] == 1) {
-        changeScore()
-      };
+        changeScore();
+      }
      if (mapArray[pacman[0]-1][pacman[1]] !== 0) {
        mapArray[pacman[0]][pacman[1]] = 2;
-       mapArray[pacman[0]-1][pacman[1]] = 3;
+       mapArray[pacman[0]-1][pacman[1]] = 5;
        pacman = [pacman[0]-1,pacman[1]];
-     };
+     }
    }
    //Below allows pacman to move to users left BUT not past walls.
      else if (event.keyCode === 37) {
        if ( mapArray[pacman[0]][pacman[1]-1] == 1) {
-         changeScore()
-       };
+         changeScore();
+       }
       if (mapArray[pacman[0]][pacman[1]-1] !== 0) {
         mapArray[pacman[0]][pacman[1]] = 2;
-        mapArray[pacman[0]][pacman[1]-1] = 3;
+        mapArray[pacman[0]][pacman[1]-1] = 4;
         pacman = [pacman[0],pacman[1]-1];
-      };
+      }
   }
   //Below allows pacman to move to users right BUT not past walls.
   else if (event.keyCode === 39) {
     if ( mapArray[pacman[0]][pacman[1]+1] == 1) {
-      changeScore()
-    };
+      changeScore();
+    }
    if (mapArray[pacman[0]][pacman[1]+1] !== 0) {
      mapArray[pacman[0]][pacman[1]] = 2;
      mapArray[pacman[0]][pacman[1]+1] = 3;
      pacman = [pacman[0],pacman[1]+1];
-   };
+   }
  }
   drawMap();
   if (score == 1560) {

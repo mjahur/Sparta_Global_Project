@@ -58,12 +58,28 @@ h1 {
   background-color: red;
 }
 
-.pacman {
+.pacmanright {
   text-align: center;
   background-image: url(../images/pacman-right.gif);
 }
 
-.ghost {
+.pacmanleft {
   text-align: center;
-  background-image: url(../images/octocat.gif);
+  background-image: url(../images/pacman-left.gif);
 }
+
+.pacmanup {
+  text-align: center;
+  background-image: url(../images/pacman-top.gif);
+}
+
+.pacmandown {
+  text-align: center;
+  background-image: url(../images/pacman-bottom.gif);
+}
+/*
+.hole {
+  background-color: red;
+  width: 25px;
+  height: 25px;
+} */
