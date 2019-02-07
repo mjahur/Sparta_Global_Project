@@ -1,6 +1,21 @@
+@font-face {
+font-family: "Neue_Pixels_Sans";
+src: url("../neue-pixel-sans/NeuePixelSans.ttf");
+}
+
 body{
   background-color: black;
-  color: yellow;
-  font-family:Helvetica;
+  color: white;
+  font-family:Neue_Pixels_Sans;
   text-align: center;
+}
+.container{
+  font-size: 15pt;
+  width: 500px;
+  margin:150px auto 0px auto;
+  text-align: center;
+}
+img{
+  margin:0px auto;
+  width: 250px;
 }

@@ -1,7 +1,12 @@
+@font-face {
+font-family: "Neue_Pixels_Sans";
+src: url("../neue-pixel-sans/NeuePixelSans.ttf");
+}
+
 body {
   background-color: black;
-  color: yellow;
-  font-family:Helvetica;
+  color: white;
+  font-family:Neue_Pixels_Sans;
   text-align: center;
 }
 .container{
@@ -14,24 +19,31 @@ body {
   display: inline-block;
   width: 475px;
   height: auto;
-  border: 2px dotted yellow;
+  border: 2px dotted white;
   text-align: center;
 }
-.score{display: inline-block;}
+.score{
+  display: inline-block;
+  margin-bottom: 3px;
+}
 
 #timer {
   display: inline-block;
-  color: yellow;
+  color: white;
+  margin-top: 3px;
 }
 
 .scoreboard{
+  margin-bottom: 25px;
+  margin-top: 25px;
   display: inline-block;
-  color: yellow;
+  color: white;
+  font-size: 20pt;
 }
 
 h1 {
   font-family:Helvetica;
-  color: yellow;
+  color: white;
   text-align: center;
 }
 

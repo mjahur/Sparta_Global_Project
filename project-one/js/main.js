@@ -34,10 +34,11 @@ var mapArray =
 var pacman = [7,9];
 var ghost = [];
 var countdown = 60;
-var score = document.getElementById('score').innerHTML;
+var score = 0;
+document.getElementById('score').innerHTML = "SCORE: "+ score;
 function changeScore() {
  score = Number(score) + 10;
- document.getElementById('score').innerHTML = score;
+ document.getElementById('score').innerHTML = "SCORE: "+ score;
 };
 
 //score
