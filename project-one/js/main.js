@@ -70,10 +70,13 @@ function drawMap() {
 };
 drawMap();
 
+
+
 //Movement
 document.onkeydown = function(event) {
   //Below allows pacman to move down BUT not past walls.
   if (event.keyCode === 40) {
+    $(".pacman").html("<div class='pacman_down'></div>")
     if ( mapArray[pacman[0]+1][pacman[1]] == 1) {
       changeScore()
     };

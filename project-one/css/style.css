@@ -62,3 +62,8 @@ h1 {
   text-align: center;
   background-image: url(../images/pacman-right.gif);
 }
+
+.ghost {
+  text-align: center;
+  background-image: url(../images/pacman-right.gif);  
+}
