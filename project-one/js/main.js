@@ -4,7 +4,7 @@ var mapArray =
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0],
 [0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0],
-[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,0],
 [0,1,0,0,1,0,1,0,0,0,0,0,1,0,1,0,0,1,0],
 [0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0],
 [0,0,0,0,1,0,0,0,2,0,2,0,0,0,1,0,0,0,0],
@@ -29,8 +29,10 @@ var mapArray =
 // coin = 1;
 // blank = 2;
 // pacman = 3;
+// ghost = 4;
 
 var pacman = [7,9];
+var ghost = [3,17];
 var countdown = 60;
 var score = document.getElementById('score').innerHTML;
 function changeScore() {
@@ -63,20 +65,83 @@ function drawMap() {
     $(".gamebody").append("<div class='blank tile'></div>");
   }
   else if (mapArray[y][x] == 3) {
-    $(".gamebody").append("<div++ class='pacman tile'></div>");
+    $(".gamebody").append("<div class='pacman tile'></div>");
+  }
+  else if (mapArray[y][x] == 4) {
+    $(".gamebody").append("<div class='ghost tile'></div>");
   }
 }
 }
 };
 drawMap();
 
+//ghost Movement
+
+// var ghostmove = setInterval( function(){
+//   var moveDirestion = [ghost[1]-1];
+//
+//   if((mapArray[ghost[0]][ghost[1]-1] != 0)&&(moveDirestion < 16))
+//   {
+//     moveDirestion = moveDirestion+1;
+//     mapArray[ghost[0]][ghost[1]] = 2;
+//     mapArray[ghost[0]][ghost[1]-1] = 4;
+//     ghost = [ghost[0], ghost[1]-1];
+//     console.log(moveDirestion +"if");
+//     drawMap()}
+//     else if((mapArray[ghost[0]][ghost[1]+1] != 0) && (moveDirestion >=16))
+//       {
+//         moveDirestion++;
+//         mapArray[ghost[0]][ghost[1]] = 2;
+//         mapArray[ghost[0]][ghost[1]+1] = 4;
+//         ghost = [ghost[0], ghost[1]+1];
+//         console.log(moveDirestion +"ifelse");
+//         drawMap()}
+//         moveDirestion = moveDirestion%34;
+//         console.log(moveDirestion+ "mod");
+//
+//
+//   }, 400);
+// ghostmove();
+// clearInterval(ghostmove);
 
 
-//Movement
+
+var ghostright = setInterval( function(){
+  if(mapArray[ghost[0]][ghost[1]-1] != 0)
+  {console.log(1);
+    mapArray[ghost[0]][ghost[1]] = 2;
+    mapArray[ghost[0]][ghost[1]-1] = 4;
+    ghost = [ghost[0], ghost[1]-1];
+    drawMap()}
+    else{
+    clearInterval(ghostright);
+    ghostleft();
+    }
+  }, 400);
+clearInterval(ghostright);
+
+
+console.log("right");
+var ghostleft =  setInterval( function(){
+  console.log("time");
+    if(mapArray[ghost[0]][ghost[1]+1] != 0)
+    {
+      mapArray[ghost[0]][ghost[1]] = 2;
+      mapArray[ghost[0]][ghost[1]+1] = 4;
+      ghost = [ghost[0], ghost[1]+1];
+      drawMap()}
+      else{
+        clearInterval(ghostleft);
+      }
+    }, 400);
+clearInterval(ghostleft);
+console.log("left");
+
+
+//Movement of pacman
 document.onkeydown = function(event) {
   //Below allows pacman to move down BUT not past walls.
   if (event.keyCode === 40) {
-    $(".pacman").html("<div class='pacman_down'></div>")
     if ( mapArray[pacman[0]+1][pacman[1]] == 1) {
       changeScore()
     };
