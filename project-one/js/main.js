@@ -28,10 +28,11 @@ var mapArray =
 // wall = 0;
 // coin = 1;
 // blank = 2;
-// pacman = 3;
-// hole=4
+// pacman = 3, 4, 5, 6;
+// ghost = 7
 
 var pacman = [7,9];
+var ghost = [];
 var countdown = 60;
 var score = document.getElementById('score').innerHTML;
 function changeScore() {
@@ -75,6 +76,9 @@ function drawMap() {
   else if (mapArray[y][x] == 6) {
     $(".gamebody").append("<div class='pacmandown tile'></div>");
   }
+  else if (mapArray[y][x] == 7) {
+    $(".gamebody").append("<div class='ghost tile'></div>");
+  }
 }
 }
 };
@@ -84,14 +88,28 @@ setInterval(function() {
   mapArray[6,10]
 })
 
+//Ghost
+//Spawn Ghost
+var ghostSpawn= setInterval( function(){
+  var x = Math.floor(Math.random() * 11) + 4;
+  var y = Math.floor(Math.random() * 18) + 1;
+  if (mapArray[y][x] != 0 && mapArray[y][x] != 3 && mapArray[y][x] != 4 && mapArray[y][x] != 5 && mapArray[y][x] != 6) {
+    var beforespawn = mapArray[y][x];
+    mapArray[y][x] = 7;
+    setTimeout(function(){mapArray[y][x] = beforespawn},2000)
+  }
+  drawMap();}, 500);
 
 //Movement of pacman
 document.onkeydown = function(event) {
   //Below allows pacman to move down BUT not past walls.
   if (event.keyCode === 40) {
-    if ( mapArray[pacman[0]+1][pacman[1]] == 1) {
-      changeScore()
-    };
+    if (mapArray[pacman[0]+1][pacman[1]] == 1) {
+      changeScore();
+    }
+    else if (mapArray[pacman[0]+1][pacman[1]] == 7){
+      document.location = "game_over.html"
+    }
     if (mapArray[pacman[0]+1][pacman[1]] !== 0) {
       mapArray[pacman[0]][pacman[1]] = 2;
       mapArray[pacman[0]+1][pacman[1]] = 6;
@@ -103,6 +121,9 @@ document.onkeydown = function(event) {
       if ( mapArray[pacman[0]-1][pacman[1]] == 1) {
         changeScore();
       }
+      else if (mapArray[pacman[0]-1][pacman[1]] == 7){
+          document.location = "game_over.html"
+        }
      if (mapArray[pacman[0]-1][pacman[1]] !== 0) {
        mapArray[pacman[0]][pacman[1]] = 2;
        mapArray[pacman[0]-1][pacman[1]] = 5;
@@ -114,6 +135,9 @@ document.onkeydown = function(event) {
        if ( mapArray[pacman[0]][pacman[1]-1] == 1) {
          changeScore();
        }
+       else if (mapArray[pacman[0]][pacman[1]-1] == 7){
+           document.location = "game_over.html"
+         }
       if (mapArray[pacman[0]][pacman[1]-1] !== 0) {
         mapArray[pacman[0]][pacman[1]] = 2;
         mapArray[pacman[0]][pacman[1]-1] = 4;
@@ -125,6 +149,9 @@ document.onkeydown = function(event) {
     if ( mapArray[pacman[0]][pacman[1]+1] == 1) {
       changeScore();
     }
+    else if (mapArray[pacman[0]][pacman[1]+1] == 7){
+        document.location = "game_over.html"
+      }
    if (mapArray[pacman[0]][pacman[1]+1] !== 0) {
      mapArray[pacman[0]][pacman[1]] = 2;
      mapArray[pacman[0]][pacman[1]+1] = 3;
