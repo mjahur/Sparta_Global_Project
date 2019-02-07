@@ -32,16 +32,17 @@ var mapArray =
 // ghost = 7
 
 var pacman = [7,9];
-var ghost = [];
 var countdown = 60;
+//initial score:
 var score = 0;
 document.getElementById('score').innerHTML = "SCORE: "+ score;
+//Created function to change score when appropriate.
 function changeScore() {
  score = Number(score) + 10;
  document.getElementById('score').innerHTML = "SCORE: "+ score;
 };
 
-//score
+//Countdown
 setInterval(function(){
   if (countdown!= 0) {
     countdown--;
@@ -51,7 +52,7 @@ setInterval(function(){
   }
 },1000);
 
-//Draw map
+//Function to draw map from the array:
 function drawMap() {
   $('.tile').remove();
   for (var y = 0; y < mapArray.length; y++) {
@@ -84,10 +85,6 @@ function drawMap() {
 }
 };
 drawMap();
-
-setInterval(function() {
-  mapArray[6,10]
-})
 
 //Ghost
 //Spawn Ghost
