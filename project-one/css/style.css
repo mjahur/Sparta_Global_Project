@@ -3,6 +3,14 @@ font-family: "Neue_Pixels_Sans";
 src: url("../neue-pixel-sans/NeuePixelSans.ttf");
 }
 
+iframe{
+  display: none;
+}
+
+audio{
+  display: none;
+}
+
 body {
   background-color: black;
   color: white;

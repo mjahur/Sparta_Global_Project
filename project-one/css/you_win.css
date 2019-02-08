@@ -8,3 +8,7 @@ body {
 .win{
   margin-top: 200px;
 }
+
+iframe{
+  display: none;
+}

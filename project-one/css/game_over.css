@@ -5,6 +5,10 @@ body {
   text-align: center;
 }
 
+iframe{
+  display: none;
+}
+
 .gameover{
   margin-top: 200px;
 }
