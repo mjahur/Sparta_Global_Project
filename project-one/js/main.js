@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function functionName(){
   var ghostSpawn= setInterval( function(){
     var x = Math.floor(Math.random() * 11) + 4;
     var y = Math.floor(Math.random() * 18) + 1;
-    if (mapArray[y][x] != 0 && mapArray[y][x] != 3 && mapArray[y][x] != 4 && mapArray[y][x] != 5 && mapArray[y][x] != 6) {
+    if (mapArray[y][x] != 7 && mapArray[y][x] != 0 && mapArray[y][x] != 3 && mapArray[y][x] != 4 && mapArray[y][x] != 5 && mapArray[y][x] != 6) {
       var beforespawn = mapArray[y][x];
       mapArray[y][x] = 7;
       setTimeout(function(){mapArray[y][x] = beforespawn},2000)
